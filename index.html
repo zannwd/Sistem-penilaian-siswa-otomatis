@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penilaian Siswa</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        text-align: center;
+        margin: 20px;
+      }
+
+      #container {
+        max-width: 400px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      label {
+        display: block;
+        margin: 10px 0;
+      }
+
+      input {
+        padding: 10px;
+        margin: 10px 0;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      button {
+        padding: 12px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      p {
+        margin: 20px 0;
+        font-weight: bold;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Penilaian Siswa</h2>
+
+    <label for="nilai">Masukkan nilai siswa:</label>
+    <input type="number" id="nilai" min="0" max="100" />
+    <button onclick="hitungNilai()">Hitung</button>
+
+    <p id="output"></p>
+
+    <script>
+      function hitungNilai() {
+        // Ambil nilai dari input
+        var nilaiAngka = parseInt(document.getElementById("nilai").value);
+
+        // Inisialisasi variabel untuk menyimpan nilai huruf dan status ganjil/genap
+        var nilaiHuruf = "";
+        var statusBilangan = "";
+
+        // Tentukan nilai huruf berdasarkan rentang nilai
+        if (nilaiAngka >= 85 && nilaiAngka <= 100) {
+          nilaiHuruf = "A";
+        } else if (nilaiAngka >= 75 && nilaiAngka <= 84) {
+          nilaiHuruf = "B";
+        } else if (nilaiAngka >= 60 && nilaiAngka <= 74) {
+          nilaiHuruf = "C";
+        } else if (nilaiAngka >= 0 && nilaiAngka <= 59) {
+          nilaiHuruf = "D";
+        } else {
+          nilaiHuruf = "Nilai tidak valid";
+        }
+
+        // Tentukan status ganjil/genap
+        if (nilaiAngka % 2 === 0) {
+          statusBilangan = "Genap";
+        } else {
+          statusBilangan = "Ganjil";
+        }
+
+        // Tampilkan output
+        var outputText =
+          "Nilai angka: " +
+          nilaiAngka +
+          "<br>Nilai huruf: " +
+          nilaiHuruf +
+          "<br>Bilangan: " +
+          statusBilangan;
+        document.getElementById("output").innerHTML = outputText;
+      }
+    </script>
+  </body>
+</html>
